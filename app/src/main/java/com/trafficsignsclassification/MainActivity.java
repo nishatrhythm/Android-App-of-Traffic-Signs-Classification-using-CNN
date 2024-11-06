@@ -29,11 +29,12 @@ import android.os.HandlerThread;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
@@ -91,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Find the main elements to animate
+        View appLogo = findViewById(R.id.appLogo);
+
+        // Load the fade-in and scale-up animation
+        Animation fadeInScaleUp = AnimationUtils.loadAnimation(this, R.anim.fade_in_scale_up);
+
+        // Start animations with a delay for a staggered effect
+        appLogo.startAnimation(fadeInScaleUp);
+
 
         // Initialize the flash toggle button
         flashToggleButton = findViewById(R.id.flashToggleButton);
@@ -131,10 +141,8 @@ public class MainActivity extends AppCompatActivity {
         // Set the spannable string to the TextView
         projectNameTextView.setText(spannableString);
 
-        // Set the status bar color to black
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.BLACK);
+        // Set the custom status bar color
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.customBlack));
 
         // Existing code for loading labels
         try {
@@ -571,30 +579,33 @@ public class MainActivity extends AppCompatActivity {
 
         // Update the UI on the main thread
         runOnUiThread(() -> {
+            int customBlack = ContextCompat.getColor(this, R.color.customBlack);
+            int customGreen = ContextCompat.getColor(this, R.color.deep_green);
+
             if (probability > THRESHOLD) {
                 // Valid class name
                 SpannableString classText = new SpannableString("Class: " + labels.get(classIndex));
-                classText.setSpan(new ForegroundColorSpan(Color.GREEN), 6, classText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                classText.setSpan(new ForegroundColorSpan(customGreen), 6, classText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 classTextView.setText(classText);
-                classTextView.setTextColor(Color.WHITE); // "Class: " portion remains white
+                classTextView.setTextColor(customBlack); // "Class: " portion remains custom white
 
                 // Probability text with green color
                 SpannableString probabilityText = new SpannableString("Probability: " + String.format("%.2f%%", probability * 100));
-                probabilityText.setSpan(new ForegroundColorSpan(Color.GREEN), 12, probabilityText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                probabilityText.setSpan(new ForegroundColorSpan(customGreen), 12, probabilityText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 probabilityTextView.setText(probabilityText);
-                probabilityTextView.setTextColor(Color.WHITE); // "Probability: " portion remains white
+                probabilityTextView.setTextColor(customBlack); // "Probability: " portion remains custom white
             } else {
                 // "N/A" class name
                 SpannableString classText = new SpannableString("Class: N/A");
                 classText.setSpan(new ForegroundColorSpan(Color.RED), 6, classText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 classTextView.setText(classText);
-                classTextView.setTextColor(Color.WHITE); // "Class: " portion remains white
+                classTextView.setTextColor(customBlack); // "Class: " portion remains custom white
 
                 // Probability text with red color
                 SpannableString probabilityText = new SpannableString("Probability: N/A");
                 probabilityText.setSpan(new ForegroundColorSpan(Color.RED), 12, probabilityText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 probabilityTextView.setText(probabilityText);
-                probabilityTextView.setTextColor(Color.WHITE); // "Probability: " portion remains white
+                probabilityTextView.setTextColor(customBlack); // "Probability: " portion remains custom white
             }
         });
     }

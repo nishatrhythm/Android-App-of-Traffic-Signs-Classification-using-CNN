@@ -2,6 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="ash">#B4B4B4</color>
-    <color name="statusBar">#E0F2F1</color>
+    <color name="rippleColor">#1E276B</color>
+    <color name="statusBar">#00897B</color>
+    <color name="customBlack">#111</color>
+    <color name="iconColor">#283593</color>
+    <color name="deep_green">#00A200</color> <!-- This is a hex code for a deep green color -->
 </resources>

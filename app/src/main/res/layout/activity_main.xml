@@ -1,9 +1,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#212121"
+    android:background="#E0F2F1"
     android:padding="30dp">
+
+    <!-- Added ImageView for shared element transition -->
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:transitionName="app_logo_transition" />
 
     <!-- Project Name at the Top -->
     <TextView
@@ -11,12 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Traffic Signs Classification"
-        android:textColor="#FF6F00"
+        android:textColor="#00897B"
         android:textSize="20sp"
         android:fontFamily="@font/netflix_bold"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@id/appLogo"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="8dp" />
 
     <!-- Camera Frame (TextureView) -->
     <TextureView
@@ -43,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Class: "
-        android:textColor="@android:color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:fontFamily="@font/netflix_bold"
         android:layout_above="@id/textureView"
@@ -56,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Probability: "
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         android:fontFamily="@font/netflix_bold"
         android:layout_below="@id/textureView"
@@ -79,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="To run this app, please allow camera permission."
-            android:textColor="#B0B0B0"
+            android:textColor="#283593"
             android:fontFamily="@font/netflix_regular"
             android:textSize="16sp"
             android:textAlignment="center"
@@ -94,10 +105,10 @@
             android:textAllCaps="false"
             android:fontFamily="@font/netflix_bold"
             android:text="Open Settings"
-            android:textColor="@color/black"
-            app:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/iconColor"
             app:cornerRadius="50dp"
-            app:rippleColor="@color/ash"/>
+            app:rippleColor="@color/rippleColor"/>
     </LinearLayout>
 
     <!-- Instruction Text with Icon and Frayed-Out Color -->
@@ -128,7 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Keep the image inside the viewfinder rectangle to scan it."
-            android:textColor="#B0B0B0"
+            android:textColor="#283593"
             android:fontFamily="@font/netflix_regular"
             android:textSize="14sp"/>
     </LinearLayout>
