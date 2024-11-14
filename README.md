@@ -2,7 +2,16 @@
 
 This repository provides an Android application for classifying traffic signs using a pre-trained Convolutional Neural Network (CNN) model. The app is designed for real-time traffic sign recognition and can be used in applications such as driver assistance and autonomous vehicle systems.
 
+
 For a detailed description of the CNN model and the underlying project, please refer to the main repository: [Traffic Signs Classification Using Convolutional Neural Networks](https://github.com/nishatrhythm/Traffic-Signs-Classification-Using-Convolution-Neural-Networks).
+
+### 📥 Download the Mobile Application for Android
+
+Download the app by clicking the button below.
+
+### [![Download Button](https://img.shields.io/badge/Download-APK-blue?style=for-the-badge&logo=android)](https://github.com/nishatrhythm/OpenCV-Back-up-for-Traffic-Signs-Classification-Android-App/raw/main/Release%20App/Traffic%20Sign.apk)
+
+_[**Note**: It may take a few moments for the download to begin, as GitHub generates a direct download link for large files.]_
 
 ---
 
